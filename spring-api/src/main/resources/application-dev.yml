@@ -1,0 +1,30 @@
+server:
+  port: ${SERVER_PORT}
+
+spring:
+    main:
+      allow-circular-references: true
+    datasource:
+      url: jdbc:postgresql://localhost/pagrn
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: create-drop
+    security:
+      oauth2:
+        resourceserver:
+          jwt:
+            issuer-uri: ${ISSUER_URI}
+
+keycloak:
+  realm: ${REALM}
+  resource: ${CLIENT_ID}
+  auth-server-url: ${AUTH_SERVER_URL}
+  ssl-required: external
+  public-client: true
+
+  use-resource-role-mappings : false
+  bearer-only: true
+
